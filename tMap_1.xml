@@ -1,0 +1,95 @@
+<?xml version="1.1" encoding="UTF-8"?>
+
+<externalNode i18n.job.component.parameters="Component Parameters:" i18n.job.properties="Properties" i18n.job.values="Values" i18n.mapper.table.for="Mapper table for " i18n.mapper.table.properties="Mapper table Properties" i18n.job.name="Name" i18n.tmap.matching.mode="Matching-mode" i18n.mapper.table.isminimized="isMinimized" i18n.tmap.isreject="isReject" i18n.tmap.isrejectinnnerjoin="isRejectInnerJoin" i18n.tmap.isinnerjoin="isInnerJoin" i18n.tmap.expressionfilter="expressionFilter" i18n.mapper.table.metadata.entries="Metadata Table Entries" i18n.job.type="Type" i18n.mapper.table.expression="Expression" i18n.tmap.isnullable="isNullable" i18n.tmap.constraint.entries="Constraint Table Entries" name="tMap_1" preview="pictures/_7rUDYJJ1EemMRosv_DymyA-tMap_1-PREVIEW.bmp">
+  <parameters>
+    <column name="tStatCatcher Statistics">false</column>
+    <column name="Mapping links display as:">AUTO</column>
+    <column name="Temp data directory path:"></column>
+    <column name="Max buffer size (nb of rows):">2000000</column>
+    <column name="Ignore trailing zeros for BigDecimal">true</column>
+    <column name="Show Information">false</column>
+    <column name="Comment"><![CDATA[]]></column>
+    <column name="Use an existing validation rule">false</column>
+  </parameters>
+  <mapperTable type="input">
+    <table name="row2" matching-mode="UNIQUE_MATCH" lookup-mode="LOAD_ONCE" isMinimized="false" isReject="false" isRejectInnerJoin="false" isInnerJoin="false" isPersistent="false" expressionFilter="null" activateExpressionFilter="false" activateCondensedTool="false" activateColumnNameFilter="false" columnNameFilter="null">
+      <metadataTableEntries>
+        <entry name="RecId" type="String" expression="" isNullable="true"/>
+        <entry name="Date" type="String" expression="" isNullable="true"/>
+        <entry name="DayNumber" type="String" expression="" isNullable="true"/>
+        <entry name="MonthNumber" type="String" expression="" isNullable="true"/>
+      </metadataTableEntries>
+    </table>
+    <table name="row1" matching-mode="ALL_ROWS" lookup-mode="LOAD_ONCE" isMinimized="false" isReject="false" isRejectInnerJoin="false" isInnerJoin="false" isPersistent="false" expressionFilter="null" activateExpressionFilter="false" activateCondensedTool="false" activateColumnNameFilter="false" columnNameFilter="null">
+      <metadataTableEntries>
+        <entry name="Hour" type="String" expression="" isNullable="true"/>
+        <entry name="Min" type="Integer" expression="" isNullable="true"/>
+        <entry name="Max" type="Integer" expression="" isNullable="true"/>
+      </metadataTableEntries>
+    </table>
+    <table name="row5" matching-mode="UNIQUE_MATCH" lookup-mode="LOAD_ONCE" isMinimized="false" isReject="false" isRejectInnerJoin="false" isInnerJoin="true" isPersistent="false" expressionFilter="null" activateExpressionFilter="false" activateCondensedTool="true" activateColumnNameFilter="false" columnNameFilter="null">
+      <metadataTableEntries>
+        <entry name="MonthNumber" type="String" expression="row2.MonthNumber " isNullable="true"/>
+        <entry name="Multiplier" type="Double" expression="" isNullable="true"/>
+      </metadataTableEntries>
+    </table>
+    <table name="row7" matching-mode="ALL_ROWS" lookup-mode="LOAD_ONCE" isMinimized="false" isReject="false" isRejectInnerJoin="false" isInnerJoin="false" isPersistent="false" expressionFilter="null" activateExpressionFilter="false" activateCondensedTool="false" activateColumnNameFilter="false" columnNameFilter="null">
+      <metadataTableEntries>
+        <entry name="StoreNumber" type="String" expression="" isNullable="true"/>
+        <entry name="VisitorCat" type="Float" expression="" isNullable="true"/>
+        <entry name="ET_REGIMETAXE" type="String" expression="" isNullable="true"/>
+      </metadataTableEntries>
+    </table>
+  </mapperTable>
+  <mapperTable type="output">
+    <table name="row24" isMinimized="false" isReject="false" isRejectInnerJoin="false" isInnerJoin="false" isPersistent="false" expressionFilter="null" activateExpressionFilter="false" activateCondensedTool="false" activateColumnNameFilter="false" columnNameFilter="null">
+      <metadataTableEntries>
+        <entry name="RecId" type="String" expression="row2.RecId " isNullable="true"/>
+        <entry name="Date" type="String" expression="row2.Date " isNullable="true"/>
+        <entry name="Hour" type="String" expression="row1.Hour " isNullable="true"/>
+        <entry name="Minutes" type="String" expression="&quot;00&quot; " isNullable="true"/>
+        <entry name="StoreNumber" type="String" expression="row7.StoreNumber " isNullable="true"/>
+        <entry name="TotalCostumers" type="Double" expression="java.lang.Math.ceil(
+
+
+(Integer.parseInt(row1.Hour) == 9 ? (Numeric.random(row1.Min,row1.Max)*row5.Multiplier) : 
+
+
+Integer.parseInt(row1.Hour) == 10 ? Numeric.random(row1.Min,row1.Max) :
+
+
+Integer.parseInt(row1.Hour) == 11 ? Numeric.random(row1.Min,row1.Max) :
+
+
+Integer.parseInt(row1.Hour) == 12 ? Numeric.random(row1.Min,row1.Max) :
+
+
+Integer.parseInt(row1.Hour) == 13 ? Numeric.random(row1.Min,row1.Max) :
+
+
+Integer.parseInt(row1.Hour) == 14 ? Numeric.random(row1.Min,row1.Max) :
+
+
+Integer.parseInt(row1.Hour) == 15 ? Numeric.random(row1.Min,row1.Max) :
+
+
+Integer.parseInt(row1.Hour) == 16 ? Numeric.random(row1.Min,row1.Max) :
+
+
+Integer.parseInt(row1.Hour) == 17 ? Numeric.random(row1.Min,row1.Max) :
+
+
+Integer.parseInt(row1.Hour) == 18 ? Numeric.random(row1.Min,row1.Max) : 0) * row7.VisitorCat
+
+
+
+) " isNullable="true"/>
+        <entry name="DayOfWeek" type="Integer" expression="TalendDate.getPartOfDate(&quot;DAY_OF_WEEK&quot;,TalendDate.parseDate(&quot;yyyy-MM-dd&quot;, TalendDate.formatDate(&quot;yyyy-MM-dd&quot;, TalendDate.getCurrentDate()))) " isNullable="true"/>
+        <entry name="Tax" type="String" expression="row7.ET_REGIMETAXE " isNullable="true"/>
+      </metadataTableEntries>
+    </table>
+  </mapperTable>
+  <mapperTable type="var">
+    <table name="Var" isMinimized="true" isReject="false" isRejectInnerJoin="false" isInnerJoin="false" isPersistent="false" expressionFilter="null" activateExpressionFilter="false" activateCondensedTool="false" activateColumnNameFilter="false" columnNameFilter="null"/>
+  </mapperTable>
+</externalNode>

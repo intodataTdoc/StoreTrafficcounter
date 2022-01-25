@@ -1,0 +1,72 @@
+<?xml version="1.1" encoding="UTF-8"?>
+
+<externalNode i18n.job.component.parameters="Component Parameters:" i18n.job.properties="Properties" i18n.job.values="Values" i18n.mapper.table.for="Mapper table for " i18n.mapper.table.properties="Mapper table Properties" i18n.job.name="Name" i18n.tmap.matching.mode="Matching-mode" i18n.mapper.table.isminimized="isMinimized" i18n.tmap.isreject="isReject" i18n.tmap.isrejectinnnerjoin="isRejectInnerJoin" i18n.tmap.isinnerjoin="isInnerJoin" i18n.tmap.expressionfilter="expressionFilter" i18n.mapper.table.metadata.entries="Metadata Table Entries" i18n.job.type="Type" i18n.mapper.table.expression="Expression" i18n.tmap.isnullable="isNullable" i18n.tmap.constraint.entries="Constraint Table Entries" name="tMap_2" preview="pictures/_7rUDYJJ1EemMRosv_DymyA-tMap_2-PREVIEW.bmp">
+  <parameters>
+    <column name="tStatCatcher Statistics">false</column>
+    <column name="Mapping links display as:">AUTO</column>
+    <column name="Temp data directory path:"></column>
+    <column name="Max buffer size (nb of rows):">2000000</column>
+    <column name="Ignore trailing zeros for BigDecimal">true</column>
+    <column name="Show Information">false</column>
+    <column name="Comment"><![CDATA[]]></column>
+    <column name="Use an existing validation rule">false</column>
+  </parameters>
+  <mapperTable type="input">
+    <table name="row24" matching-mode="UNIQUE_MATCH" lookup-mode="LOAD_ONCE" isMinimized="false" isReject="false" isRejectInnerJoin="false" isInnerJoin="false" isPersistent="false" expressionFilter="null" activateExpressionFilter="false" activateCondensedTool="false" activateColumnNameFilter="false" columnNameFilter="null">
+      <metadataTableEntries>
+        <entry name="RecId" type="String" expression="" isNullable="true"/>
+        <entry name="Date" type="String" expression="" isNullable="true"/>
+        <entry name="Hour" type="String" expression="" isNullable="true"/>
+        <entry name="Minutes" type="String" expression="" isNullable="true"/>
+        <entry name="StoreNumber" type="String" expression="" isNullable="true"/>
+        <entry name="TotalCostumers" type="Double" expression="" isNullable="true"/>
+        <entry name="DayOfWeek" type="Integer" expression="" isNullable="true"/>
+        <entry name="Tax" type="String" expression="" isNullable="true"/>
+      </metadataTableEntries>
+    </table>
+  </mapperTable>
+  <mapperTable type="output">
+    <table name="copyOfout2" isMinimized="false" isReject="false" isRejectInnerJoin="false" isInnerJoin="false" isPersistent="false" expressionFilter="null" activateExpressionFilter="false" activateCondensedTool="false" activateColumnNameFilter="false" columnNameFilter="null">
+      <metadataTableEntries>
+        <entry name="RecId" type="String" expression="row24.RecId" isNullable="true"/>
+        <entry name="Date" type="String" expression="row24.Date" isNullable="true"/>
+        <entry name="Hour" type="String" expression="row24.Hour" isNullable="true"/>
+        <entry name="Minutes" type="String" expression="row24.Minutes" isNullable="true"/>
+        <entry name="CustomerID" type="String" expression="" isNullable="true"/>
+        <entry name="StoreNumber" type="String" expression="row24.StoreNumber" isNullable="true"/>
+        <entry name="TotalCostumers" type="String" expression="StringHandling.LEFT(
+
+
+(String.valueOf(java.lang.Math.ceil(row24.DayOfWeek == 1 ? row24.TotalCostumers * 1.2 :
+row24.DayOfWeek == 2 ? row24.TotalCostumers * 1.0 :
+row24.DayOfWeek == 3 ? row24.TotalCostumers * 1.1 :
+row24.DayOfWeek == 4 ? row24.TotalCostumers * 1.3 :
+row24.DayOfWeek == 5 ? row24.TotalCostumers * 1.5 :
+row24.DayOfWeek == 6 ? row24.TotalCostumers * 1.7 :
+row24.DayOfWeek == 7 ? row24.TotalCostumers * 1.9 : 0))) 
+
+
+
+
+
+,StringHandling.LEN(
+
+
+(String.valueOf(java.lang.Math.ceil(row24.DayOfWeek == 1 ? row24.TotalCostumers * 1.2 :
+row24.DayOfWeek == 2 ? row24.TotalCostumers * 1.0 :
+row24.DayOfWeek == 3 ? row24.TotalCostumers * 1.1 :
+row24.DayOfWeek == 4 ? row24.TotalCostumers * 1.3 :
+row24.DayOfWeek == 5 ? row24.TotalCostumers * 1.5 :
+row24.DayOfWeek == 6 ? row24.TotalCostumers * 1.7 :
+row24.DayOfWeek == 7 ? row24.TotalCostumers * 1.9 : 0))) 
+
+
+)-2) " isNullable="true"/>
+        <entry name="Tax" type="String" expression="row24.Tax " isNullable="true"/>
+      </metadataTableEntries>
+    </table>
+  </mapperTable>
+  <mapperTable type="var">
+    <table name="Var" isMinimized="true" isReject="false" isRejectInnerJoin="false" isInnerJoin="false" isPersistent="false" expressionFilter="null" activateExpressionFilter="false" activateCondensedTool="false" activateColumnNameFilter="false" columnNameFilter="null"/>
+  </mapperTable>
+</externalNode>

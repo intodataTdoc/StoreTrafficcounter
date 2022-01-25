@@ -1,0 +1,76 @@
+<?xml version="1.1" encoding="UTF-8"?>
+
+<externalNode i18n.job.component.parameters="Component Parameters:" i18n.job.properties="Properties" i18n.job.values="Values" i18n.mapper.table.for="Mapper table for " i18n.mapper.table.properties="Mapper table Properties" i18n.job.name="Name" i18n.tmap.matching.mode="Matching-mode" i18n.mapper.table.isminimized="isMinimized" i18n.tmap.isreject="isReject" i18n.tmap.isrejectinnnerjoin="isRejectInnerJoin" i18n.tmap.isinnerjoin="isInnerJoin" i18n.tmap.expressionfilter="expressionFilter" i18n.mapper.table.metadata.entries="Metadata Table Entries" i18n.job.type="Type" i18n.mapper.table.expression="Expression" i18n.tmap.isnullable="isNullable" i18n.tmap.constraint.entries="Constraint Table Entries" name="tMap_5" preview="pictures/_7rUDYJJ1EemMRosv_DymyA-tMap_5-PREVIEW.bmp">
+  <parameters>
+    <column name="tStatCatcher Statistics">false</column>
+    <column name="Mapping links display as:">AUTO</column>
+    <column name="Temp data directory path:"></column>
+    <column name="Max buffer size (nb of rows):">2000000</column>
+    <column name="Ignore trailing zeros for BigDecimal">true</column>
+    <column name="Show Information">false</column>
+    <column name="Comment"><![CDATA[]]></column>
+    <column name="Use an existing validation rule">false</column>
+  </parameters>
+  <mapperTable type="input">
+    <table name="row20" matching-mode="UNIQUE_MATCH" lookup-mode="LOAD_ONCE" isMinimized="false" isReject="false" isRejectInnerJoin="false" isInnerJoin="false" isPersistent="false" expressionFilter="null" activateExpressionFilter="false" activateCondensedTool="false" activateColumnNameFilter="false" columnNameFilter="null">
+      <metadataTableEntries>
+        <entry name="RecId" type="String" expression="" isNullable="true"/>
+        <entry name="DocumentNumber" type="String" expression="" isNullable="true"/>
+        <entry name="Storenumber" type="String" expression="" isNullable="true"/>
+        <entry name="Barcode" type="String" expression="" isNullable="true"/>
+        <entry name="Quantity" type="Integer" expression="" isNullable="true"/>
+        <entry name="Date" type="String" expression="" isNullable="true"/>
+        <entry name="storeNumberSorting" type="Integer" expression="" isNullable="true"/>
+        <entry name="rowNumberSorting" type="Integer" expression="" isNullable="true"/>
+        <entry name="lineNumber" type="Integer" expression="" isNullable="true"/>
+        <entry name="CustomerID" type="String" expression="" isNullable="true"/>
+        <entry name="Tax" type="String" expression="" isNullable="true"/>
+      </metadataTableEntries>
+    </table>
+    <table name="BarcodeAndPrice" matching-mode="UNIQUE_MATCH" lookup-mode="RELOAD" isMinimized="false" isReject="false" isRejectInnerJoin="false" isInnerJoin="true" isPersistent="false" expressionFilter="null" activateExpressionFilter="false" activateCondensedTool="false" activateColumnNameFilter="false" columnNameFilter="null">
+      <metadataTableEntries>
+        <entry name="GA_CODEBARRE" type="String" expression="" isNullable="true"/>
+        <entry name="GA_PVTTC" type="Double" expression="" isNullable="true"/>
+        <entry name="rownumber" type="Integer" expression="row20.lineNumber " isNullable="true"/>
+      </metadataTableEntries>
+    </table>
+    <table name="RegioTax" matching-mode="UNIQUE_MATCH" lookup-mode="LOAD_ONCE" isMinimized="false" isReject="false" isRejectInnerJoin="false" isInnerJoin="true" isPersistent="false" expressionFilter="null" activateExpressionFilter="false" activateCondensedTool="true" activateColumnNameFilter="false" columnNameFilter="null">
+      <metadataTableEntries>
+        <entry name="StoreNumber" type="String" expression="row20.Storenumber " isNullable="true"/>
+        <entry name="ET_CODEMODELETAXE" type="String" expression="" isNullable="true"/>
+        <entry name="ET_REGIMETAXE" type="String" expression="" isNullable="true"/>
+      </metadataTableEntries>
+    </table>
+    <table name="MmembersAndTaxRegio" matching-mode="UNIQUE_MATCH" lookup-mode="LOAD_ONCE" isMinimized="false" isReject="false" isRejectInnerJoin="false" isInnerJoin="false" isPersistent="false" expressionFilter="null" activateExpressionFilter="false" activateCondensedTool="false" activateColumnNameFilter="false" columnNameFilter="null">
+      <metadataTableEntries>
+        <entry name="T_TIERS" type="String" expression="" isNullable="true"/>
+        <entry name="T_REGIMETVA" type="String" expression="RegioTax.ET_REGIMETAXE " isNullable="true"/>
+      </metadataTableEntries>
+    </table>
+    <table name="row13" matching-mode="UNIQUE_MATCH" lookup-mode="RELOAD" isMinimized="false" isReject="false" isRejectInnerJoin="false" isInnerJoin="true" isPersistent="false" expressionFilter="null" activateExpressionFilter="false" activateCondensedTool="true" activateColumnNameFilter="false" columnNameFilter="null">
+      <metadataTableEntries>
+        <entry name="GCL_ETABLISSEMENT" type="String" expression="row20.Storenumber " isNullable="true"/>
+        <entry name="GCL_COMMERCIAL" type="String" expression="" isNullable="true"/>
+      </metadataTableEntries>
+    </table>
+  </mapperTable>
+  <mapperTable type="output">
+    <table name="out5" isMinimized="false" isReject="false" isRejectInnerJoin="false" isInnerJoin="false" isPersistent="false" expressionFilter="null" activateExpressionFilter="false" activateCondensedTool="false" activateColumnNameFilter="false" columnNameFilter="null">
+      <metadataTableEntries>
+        <entry name="RecId" type="String" expression="StringHandling.LEFT(&quot;VRKC1 &quot;,6) " isNullable="true"/>
+        <entry name="DocumentNumber" type="String" expression="row20.DocumentNumber " isNullable="true"/>
+        <entry name="Storenumber" type="String" expression="row20.Storenumber " isNullable="true"/>
+        <entry name="Customer" type="String" expression="row20.CustomerID " isNullable="true"/>
+        <entry name="Barcode" type="String" expression="BarcodeAndPrice.GA_CODEBARRE " isNullable="true"/>
+        <entry name="Quantity" type="Integer" expression="row20.Quantity " isNullable="true"/>
+        <entry name="Date" type="String" expression="row20.Date " isNullable="true"/>
+        <entry name="Tax" type="String" expression="StringHandling.TRIM(row20.Tax)  " isNullable="true"/>
+        <entry name="Price" type="Double" expression="BarcodeAndPrice.GA_PVTTC " isNullable="true"/>
+        <entry name="SalesRep" type="String" expression=" row13.GCL_COMMERCIAL " isNullable="true"/>
+      </metadataTableEntries>
+    </table>
+  </mapperTable>
+  <mapperTable type="var">
+    <table name="Var" isMinimized="true" isReject="false" isRejectInnerJoin="false" isInnerJoin="false" isPersistent="false" expressionFilter="null" activateExpressionFilter="false" activateCondensedTool="false" activateColumnNameFilter="false" columnNameFilter="null"/>
+  </mapperTable>
+</externalNode>
